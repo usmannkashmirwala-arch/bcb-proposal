@@ -6,31 +6,263 @@
 <title>Proposal | Better Call Bot</title>
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" type="image/png" href="https://public.readdy.ai/ai/img_res/678e526c-6790-4de6-bb51-b91d47d86c8e.png" sizes="64x64" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+
 <style>
+  :root {
+    --bg: #f5f4f0;
+    --ink: #1a1a1a;
+    --ink-soft: #2b2b2b;
+    --red: #ff3131;
+    --max: 1180px;
+  }
   * { box-sizing: border-box; }
-  html, body {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
     margin: 0;
-    padding: 0;
-    background: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  main {
-    max-width: 960px;
+  img { max-width: 100%; display: block; height: auto; }
+
+  .wrap {
+    max-width: var(--max);
     margin: 0 auto;
-    padding: 24px 20px 48px;
+    padding: 0 clamp(20px, 5vw, 48px);
   }
+
+  section { padding: clamp(40px, 6vw, 72px) 0; }
+  section + section { border-top: 1px solid rgba(0,0,0,0.06); }
+
+  .display {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+  .label {
+    font-family: "DM Sans", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .lede {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+  p {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .accent { color: var(--red); }
+
+  /* ---------- Hero ---------- */
+  .hero-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    margin: 0;
+  }
+  .hero-headline-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: right;
+  }
+  .hero-headline {
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    margin: 0;
+  }
+  .hero-headline .small-line { font-size: 0.55em; }
+  .ctrl-icon {
+    width: clamp(56px, 8vw, 96px);
+    flex-shrink: 0;
+  }
+  .subhead {
+    font-size: clamp(1.3rem, 2.8vw, 2rem);
+    margin: 28px 0 0;
+  }
+  .hero-copy { margin-top: 20px; }
+  .industry-label { font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin: 0 0 16px; display: block; }
+
+  /* ---------- Section headers ---------- */
+  .kicker { font-size: clamp(1.1rem, 2.2vw, 1.5rem); display: block; margin-bottom: 8px; }
+  .section-title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); margin: 4px 0 18px; }
+  .index-num { font-size: clamp(1.5rem, 3vw, 2.2rem); display: block; margin-bottom: 4px; }
+  .heading-with-media {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .help-icons-img { width: clamp(140px, 18vw, 210px); }
+
+  /* ---------- Feature blocks ---------- */
+  .feature { margin-top: 32px; }
+  .feature-title {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--red);
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    margin: 0 0 8px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ---------- Media panels ---------- */
+  .media-panel {
+    margin-top: 36px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 860px) {
+    .split { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+    .split.reverse { grid-template-columns: 0.9fr 1.1fr; }
+    .split.reverse .split-media { order: 2; }
+  }
+  .split-media img { border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+  footer {
+    text-align: center;
+    padding: 28px 20px 40px;
+    font-size: 0.85rem;
+    color: #888;
+  }
+  footer a { color: #888; }
 </style>
 </head>
 <body>
-<main>
-  <div style="position: relative; width: 100%; height: 0; padding-top: 393.5578%;
-   padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-   border-radius: 8px; will-change: transform;">
-    <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-      src="https://www.canva.com/design/DAHTA4ZXfQE/7b7xDLfjYDqls4d-PXFeqg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-    </iframe>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <h1 class="logo display">Better Call <span class="accent">Bot</span></h1>
+      <div class="hero-headline-block">
+        <p class="hero-headline display">Every<br>Thing<br><span class="small-line">is under</span></p>
+        <img class="ctrl-icon" src="images/ctrl-key-icon.png" alt="" />
+      </div>
+    </div>
+
+    <h2 class="subhead lede">Your Gen Z customers want instant <span class="accent">answers</span></h2>
+
+    <div class="hero-copy">
+      <p>Customers today expect an answer in minutes, not hours, and if they don't get one, they don't wait, they move on.</p>
+    </div>
+
+    <div style="margin-top:48px;">
+      <span class="label industry-label">The Industry Reality</span>
+      <p>According to Forbes, each year, businesses lose an estimated $75 billion to poor customer service. From slow replies, unanswered queries, and support experiences that make customers feel invisible. Most of those customers never complain. They find a competitor, click checkout, and disappear without a word.</p>
+    </div>
   </div>
-  <a href="https://www.canva.com/design/DAHTA4ZXfQE/7b7xDLfjYDqls4d-PXFeqg/view?utm_content=DAHTA4ZXfQE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">BCB Proposal</a> by Usman Kashmirwala
-</main>
+</section>
+
+<section id="how-we-help">
+  <div class="wrap">
+    <span class="label kicker">How We Help</span>
+    <h2 class="lede" style="font-size:clamp(1.2rem,2.4vw,1.7rem); margin:0 0 32px;">Two systems. One job. Never lose a customer to silence</h2>
+
+    <div class="heading-with-media">
+      <div>
+        <span class="label index-num">1.</span>
+        <h3 class="section-title lede">Omni Channel AI Customer Support</h3>
+        <p>One AI Powered System trained on everything about your business. Live on each and every Platform.</p>
+      </div>
+      <img class="help-icons-img" src="images/help-icons.png" alt="" />
+    </div>
+
+    <div class="feature">
+      <p class="feature-title">Every answer is a real one, instantly.</p>
+      <p>Shipping, sizing, availability, fabric, returns, voice messages, product screenshots or videos — our system knows it all, the way your best staff member would, and answers in seconds instead of making customers wait for "someone to check." No hold time. No guessing. No lost sale to silence.</p>
+    </div>
+
+    <div class="feature">
+      <p class="feature-title">Never closed, never confused.</p>
+      <p>24/7 coverage across every channel your customers already use — WhatsApp, Instagram, your website. Sale season, promo details, policy exceptions — always accurate, always available, whether it's 2pm on a Tuesday or 2am on a Sunday.</p>
+    </div>
+
+    <div class="feature">
+      <p class="feature-title">Customers feel heard, not processed.</p>
+      <p>It doesn't just answer — it asks the right follow-up, picks up on what the customer actually needs, and speaks to your product quality the way you would. The result feels like attentive service, not automation. Every conversation, handled like your top performer is working the desk — around the clock.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="wrap">
+    <span class="label index-num">1.1</span>
+    <h3 class="section-title lede">Personal Omni Channel Dashboard</h3>
+    <p>Your own omni channel dashboard, every conversation, every platform, in one place. Watch it live, jump in and take over anytime, or assign specific tickets straight to your team.</p>
+    <img class="media-panel" src="images/dashboard.jpg" alt="Omni channel conversations dashboard" loading="lazy" />
+  </div>
+</section>
+
+<section id="shopping-assistant">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="label index-num">2.</span>
+        <h3 class="section-title lede">AI Shopping Assistant</h3>
+        <p>A shopping assistant built into your website that talks to customers the way your best salesperson would — asking what they need, recommending real products from your real catalogue, and walking them straight to checkout instead of letting them bounce.</p>
+      </div>
+      <div class="split-media">
+        <img src="images/shopping-assist.jpg" alt="AI shopping assistant on a phone" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="feature">
+      <p class="feature-title">It sells like your best salesperson, not a search bar.</p>
+      <p>Every visitor gets a real conversation — what are you looking for, what's it for, what fits your budget — and gets pointed straight to the product that actually matches, pulled live from your real catalogue. No scrolling, no guessing, no leaving to "think about it."</p>
+    </div>
+
+    <div class="feature">
+      <p class="feature-title">It catches the sale before the bounce.</p>
+      <p>Most visitors don't buy because they're confused, not because they're uninterested. The assistant clears that confusion in real time — sizing, comparisons, what's in stock — right at the moment a customer is about to give up and leave.</p>
+    </div>
+
+    <div class="feature">
+      <p class="feature-title">It knows your products the way you do.</p>
+      <p>Fabric, quality, use case, what makes one option better than another for a specific customer — it speaks to your products with the same confidence and detail your best staff member would, building trust in the moment that actually decides the sale.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <span class="label index-num">Pricing</span>
+    <h3 class="section-title lede">Our products start from $100/month</h3>
+    <img class="media-panel" src="images/pricing-photo.jpg" alt="AI shopping assistant live on a client website" loading="lazy" />
+  </div>
+</section>
+
+<footer>
+  Better Call Bot — Proposal
+</footer>
+
 </body>
 </html>
